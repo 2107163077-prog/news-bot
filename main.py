@@ -14,7 +14,6 @@ def fetch_news_titles():
     queries = ["薬学 研究 免疫 遺伝学", "製薬 経済 薬価 市場動向"]
     articles = []
     for q in queries:
-        # キーワードをURL安全な形式に変換（スペースエラー回避）
         encoded_q = quote(q)
         url = f"https://news.google.com/rss/search?q={encoded_q}&hl=ja&gl=JP&ceid=JP:ja"
         
@@ -52,7 +51,7 @@ def generate_digest(news_data):
 ☀️ **今日のまとめ**（全体を1〜2文で締める）
 """
     response = client.models.generate_content(
-        model="gemini-2.5-flash",
+        model="gemini-3.6-flash",
         contents=prompt
     )
     return response.text
